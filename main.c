@@ -49,14 +49,13 @@ void benchmark_latency(void *test_setting, size_t min_loop) {
 }
 
 int main() {
-    size_t heap_size = (size_t)(heap_end_location - heap_start_location);
     // If TEST_SIZE is 0, it will be the allocable heap size.
     // Therefore, for testing mem devices not in the range covered by the
     // heap memory, not only TEST_ADDR should be adjusted, TEST_SIZE
     // should be adjusted as well since the size is irrelevant to the heap
     // size.
 #if TEST_SIZE==0
-    size_t test_size = heap_size;
+    size_t test_size = (size_t)(heap_end_location - heap_start_location);
 #else
     size_t test_size = (size_t)TEST_SIZE;
 #endif
