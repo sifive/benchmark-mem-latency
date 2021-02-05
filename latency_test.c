@@ -41,6 +41,8 @@ void rnd_init(void *test_setting) {
 #ifdef TEST_ADDR
     register char *addr = setting->addr = (char *)TEST_ADDR;
 #else
+    // If TEST_ADDR is not specified, by default this program tests the
+    // the heap memory, which is managed by malloc/free.
     register char *addr = setting->addr = (char *)malloc(setting->max_range);
 #endif
 
